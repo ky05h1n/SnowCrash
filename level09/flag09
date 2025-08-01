@@ -1,0 +1,17 @@
+Level09:
+- Ran: `ls -l` → found a SUID binary `level09` and a file `token` readable only by `flag09`.
+- Ran: `./level09 token` → output: `tpmhr`
+- Ran: `./level09 abcdefg` → output: `acegikm`
+- Observation: Each input character was shifted by its index (`a+0, b+1, c+2, ...`).
+- Disassembled binary with Ghidra:
+  - Main loop confirmed: `putchar(argv[1][i] + i)`
+  - Logic: add index to each input character
+- Conclusion: `token` was likely encoded using this same logic: `encoded[i] = original[i] + i`
+- Exploit Identified: Decode `token` byte-by-byte by subtracting index: `original[i] = token[i] - i`
+- Built a C program to apply `decoded[i] = token[i] - i`
+- Output: `f3iji1ju5yuevaus41q1afiuq`
+- Warning: Using `cat` or `echo` to copy `token` corrupts non-ASCII bytes; must use `xxd`, `cp`, or `scp`
+- Final Step: Logged into level10 successfully using the decoded password
+
+> PASS : s5cAJpM8ev6XHw998pRWG728z > level10
+

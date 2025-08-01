@@ -1,0 +1,27 @@
+level11:
+- Found: /home/user/level11/level11.lua (SUID Lua script)
+- Permissions: -rwsr-sr-x 1 flag11 level11
+- Behavior: Starts a TCP server on localhost:5151
+- Asks for a password, hashes input via: io.popen("echo " .. input .. " | sha1sum")
+- Vulnerability: Command Injection via unsanitized input passed to shell
+
+Exploit Plan:
+- Connect to localhost:5151 using netcat or socket
+- Inject shell command using input like: ; getflag > /tmp/pwned
+- Lua’s popen executes: echo ; getflag > /tmp/pwned | sha1sum
+- Shell executes getflag as flag11, writes token to /tmp/pwned
+- Read token from /tmp/pwned
+
+Exploit Result:
+- Received: fa6v5ateaw21peobuub8ipe6s
+
+Key Concepts:
+- popen() spawns /bin/sh -c <string>, honoring shell metacharacters
+- No sanitization = trivial command injection
+- SUID applies to popen() environment → getflag runs as flag11
+- Classic mistake: using string concatenation with untrusted input in shell commands
+
+
+-Flag Token : fa6v5ateaw21peobuub8ipe6s > level12
+
+
