@@ -1,0 +1,11 @@
+Level 02:
+- Transferred: scp /home/level02/capture.pcap kali@192.168.16.100:/home/kyoshin/capture.pcap
+- Analyzed: wireshark /home/kyoshin/capture.pcap
+- Findings: TCP packets, Telnet session with login "levelX", password "ft_wandr...NDRel.L0L", 
+- server response "Login incorrect" > A correct password sign 
+- Using Hex Dump : Showing The Enycrypted Password with the hex of DELETE "7f" NON PRINTABLE CHARACTERS as "." separating the password and showing a correction  -> "ft_wandr...NDRel.L0L"
+- Deleting the wrong charachters as "." represent a deleted char "ndr = ..." and "l = ."
+- Password: ft_waNDReL0L
+- Ran: getflag
+- Output: kooda2puivaav1idi4f57q8iq -> level03
+

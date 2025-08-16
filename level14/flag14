@@ -1,15 +1,1 @@
-Level 14:
-
-- File: getflag
-- Language: C
-- Permissions: -rwxr-xr-x 1 root root
-- Behavior: it checks the  uid and then picks one of a bunch of encrypted strings, runs it through ft_des, and prints the token for that user
-
-Vulnerability:
-
-- reversing it with ghidra bypassing the preload-check exposed all the raw encrypted tokens
-- using the logic of the ft_des decryption function
-
-
-- Flag Token : 7QiHafiNa3HVozsaXkawuYrTstxbpABHD8CPnHJ
-
+7QiHafiNa3HVozsaXkawuYrTstxbpABHD8CPnHJ

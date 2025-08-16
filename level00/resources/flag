@@ -1,0 +1,13 @@
+Level 00:
+- Connected: ssh level00@192.168.16.128 -p 4242 (password: level00)
+- Ran: find / -type f -group flag00 2> /dev/null
+- Output: /usr/sbin/john, /rofs/usr/sbin/john
+- Ran: ls -l /usr/sbin/john
+- Output: ----r--r-- 1 flag00 flag00 15 Mar 5 2016 /usr/sbin/john
+- Ran: cat /usr/sbin/john
+- Output: cdiiddwpgswtgt
+- Decoded cdiiddwpgswtgt with Caesar cipher (ROT-11): nottoohardhere
+- Tested passwords using ROT outputs (script: resource/scripts/crack.py)
+- Confirmed: ssh flag00@x.x.x.x -p 4242 with password "nottoohardhere"
+- Ran: getflag
+- Output: x24ti5gi3x0ol2eh4esiuxias > level01 
