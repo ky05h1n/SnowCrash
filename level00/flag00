@@ -10,4 +10,4 @@ Level 00:
 - Tested passwords using ROT outputs (script: resource/scripts/crack.py)
 - Confirmed: ssh flag00@x.x.x.x -p 4242 with password "nottoohardhere"
 - Ran: getflag
-- Output: x24ti5gi3x0ol2eh4esiuxias (level01 password)
+- Output: x24ti5gi3x0ol2eh4esiuxias > level01 

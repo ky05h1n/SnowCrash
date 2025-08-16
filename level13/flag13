@@ -1,0 +1,15 @@
+Level 13:
+
+- File: level13
+- Language: C
+- Permissions: -rwsr-sr-x 1 flag13  level13
+- Behavior: it checks for the flag13 id , if user is not flag13 program won't run
+
+Vulnerability:
+
+- ft_des() function takes the raw encrypted token , token exposed in ghidra when the program is reversed 
+- passing the raw encrypted token to the recrafted ft_des fucntion
+
+
+- Flag Token : 2A31L79asukciNyi8uppkEuSx > level14
+
